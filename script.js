@@ -49,9 +49,7 @@ let todoList = {
     }
 }
 
-let handlers = {
-    
-}
+//document.getElementById('toggleAllTodosButton').addEventListener('click', todoList.toggleAll)
 
 let view = {
     displayTodos: function() {
@@ -61,7 +59,9 @@ let view = {
         
         //checks if the todo list is empty
         if(todoList.myTodos == '') {
-            console.log('Todo List is Empty')
+            let todosLi = document.createElement('li')
+            todosUl.appendChild(todosLi)
+            todosLi.textContent = 'Todo List is Empty'
         
         } else {
             
