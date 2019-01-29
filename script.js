@@ -56,6 +56,14 @@ let handlers = {
             addTodoInput.value = ''
     },
     
+    changeTodo: document.getElementById('changeTodoButton').onclick = function() {
+        let changeTodoLocation = document.getElementById('changeTodoLocation')
+        let changeTodoText = document.getElementById('changeTodoText')
+        todoList.changeTodoName(changeTodoLocation.value, changeTodoText.value)
+        changeTodoLocation.value = ''
+        changeTodoText.value = ''
+    },
+    
     toggleTodos: document.getElementById('toggleAllTodosButton').onclick = function() {
         todoList.toggleAll()
     }
