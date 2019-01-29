@@ -49,7 +49,17 @@ let todoList = {
     }
 }
 
-//document.getElementById('toggleAllTodosButton').addEventListener('click', todoList.toggleAll)
+let handlers = {
+    addTodo: document.getElementById('addTodoButton').onclick = function() {
+        let addTodoInput = document.getElementById('addTodoInput')
+            todoList.addTodo(addTodoInput.value)
+            addTodoInput.value = ''
+    },
+    
+    toggleTodos: document.getElementById('toggleAllTodosButton').onclick = function() {
+        todoList.toggleAll()
+    }
+}
 
 let view = {
     displayTodos: function() {
