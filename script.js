@@ -64,6 +64,12 @@ let handlers = {
         changeTodoText.value = ''
     },
     
+    toggleTodo: document.getElementById('toggleTodoButton').onclick = function() {
+        let toggleTodoInput = document.getElementById('toggleTodoInput')
+        todoList.toggleTodo(toggleTodoInput.value)
+        toggleTodoInput.value = ''
+    },
+    
     toggleTodos: document.getElementById('toggleAllTodosButton').onclick = function() {
         todoList.toggleAll()
     }
