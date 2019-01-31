@@ -96,13 +96,20 @@ let view = {
                 
                 //checks if the todo is completed and then assigns todo text to li so it displays in the DOM
                 if(todo.completed === true) {
-                    todosUl.appendChild(todosLi)
                     todosLi.textContent = '(X) ' + todoList.myTodos[i].todoName
                 } else {
-                    todosUl.appendChild(todosLi)
                     todosLi.textContent = '( ) ' + todoList.myTodos[i].todoName
                 }
+                todosLi.appendChild(this.createDeleteButton())
+                todosUl.appendChild(todosLi)
             }
         }
+    },
+    
+    createDeleteButton: function() {
+        var deleteButton = document.createElement('button')
+        deleteButton.textContent = 'Delete'
+        deleteButton.className = 'deleteButton'
+        return deleteButton
     }
 }
