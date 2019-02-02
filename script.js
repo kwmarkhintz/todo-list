@@ -50,11 +50,13 @@ let todoList = {
 }
 
 let handlers = {
-    addTodo: document.getElementById('addTodoButton').onclick = function() {
+    addTodo: document.getElementById('addTodoInput').addEventListener('keyup', function(event) {
         let addTodoInput = document.getElementById('addTodoInput')
+        if(event.keyCode === 13) {
             todoList.addTodo(addTodoInput.value)
             addTodoInput.value = ''
-    },
+        }
+    }),
     
     changeTodo: document.getElementById('changeTodoButton').onclick = function() {
         let changeTodoLocation = document.getElementById('changeTodoLocation')
@@ -62,10 +64,6 @@ let handlers = {
         todoList.changeTodoName(changeTodoLocation.value, changeTodoText.value)
         changeTodoLocation.value = ''
         changeTodoText.value = ''
-    },
-    
-    deleteTodo: function() {
-        
     },
     
     toggleTodo: document.getElementById('toggleTodoButton').onclick = function() {
@@ -76,7 +74,7 @@ let handlers = {
     
     toggleTodos: document.getElementById('toggleAllTodosButton').onclick = function() {
         todoList.toggleAll()
-    }
+    },
 }
 
 let view = {
@@ -116,7 +114,9 @@ let view = {
         deleteButton.textContent = 'Delete'
         deleteButton.className = 'deleteButton'
         return deleteButton
-    }
+    },
+    
+    
 }
 
     let todoUl = document.querySelector('ul')
@@ -125,7 +125,8 @@ let view = {
     let elementClicked = event.target
 
     if(elementClicked.className === 'deleteButton') {
-        todoList.deleteTodo(elementClicked.id)
+        //todoList.deleteTodo(elementClicked.id)
+        console.log(elementClicked.id)
     }
 })
 
