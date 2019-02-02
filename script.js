@@ -64,6 +64,10 @@ let handlers = {
         changeTodoText.value = ''
     },
     
+    deleteTodo: function() {
+        
+    },
+    
     toggleTodo: document.getElementById('toggleTodoButton').onclick = function() {
         let toggleTodoInput = document.getElementById('toggleTodoInput')
         todoList.toggleTodo(toggleTodoInput.value)
@@ -100,6 +104,7 @@ let view = {
                 } else {
                     todosLi.textContent = '( ) ' + todoList.myTodos[i].todoName
                 }
+                todosLi.id = i
                 todosLi.appendChild(this.createDeleteButton())
                 todosUl.appendChild(todosLi)
             }
@@ -113,3 +118,21 @@ let view = {
         return deleteButton
     }
 }
+
+    let todoUl = document.querySelector('ul')
+    todoUl.addEventListener('click', function(event) {
+
+    let elementClicked = event.target
+
+    if(elementClicked.className === 'deleteButton') {
+        todoList.deleteTodo(elementClicked.id)
+    }
+})
+
+
+
+
+
+
+
+
