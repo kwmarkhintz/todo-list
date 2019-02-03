@@ -102,9 +102,9 @@ let view = {
                 } else {
                     todosLi.textContent = '( ) ' + todoList.myTodos[i].todoName
                 }
-                todosLi.id = i
                 todosLi.appendChild(this.createDeleteButton())
                 todosUl.appendChild(todosLi)
+                todosLi.id = i
             }
         }
     },
@@ -125,8 +125,7 @@ let view = {
     let elementClicked = event.target
 
     if(elementClicked.className === 'deleteButton') {
-        //todoList.deleteTodo(elementClicked.id)
-        console.log(elementClicked.id)
+        todoList.deleteTodo(elementClicked.parentNode.id)
     }
 })
 
