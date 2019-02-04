@@ -88,6 +88,7 @@ let view = {
             //creates a list element for each todo in the array
             for(var i = 0; i < todoList.myTodos.length; i++) {
                 let todosLi = document.createElement('li')
+                let todosInput = document.createElement('input')
                 let todo = todoList.myTodos[i]
                 
                 //checks if the todo is completed and then assigns todo text to li so it displays in the DOM
@@ -100,7 +101,10 @@ let view = {
                 todosLi.appendChild(this.createEditButton())
                 todosLi.appendChild(this.createToggleButton())
                 todosUl.appendChild(todosLi)
+                todosUl.appendChild(todosInput)
+                todosInput.setAttribute('hidden', 'true')
                 todosLi.id = i
+                todosInput.id = i
             }
         }
     },
@@ -137,13 +141,7 @@ let view = {
         
     } else if (elementClicked.className === 'toggleButton') {
         todoList.toggleTodo(elementClicked.parentNode.id)
+    
     }
 })
-
-
-
-
-
-
-
 
