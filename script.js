@@ -58,13 +58,13 @@ let handlers = {
         }
     }),
     
-    changeTodo: document.getElementById('changeTodoButton').onclick = function() {
-        let changeTodoLocation = document.getElementById('changeTodoLocation')
-        let changeTodoText = document.getElementById('changeTodoText')
-        todoList.changeTodoName(changeTodoLocation.value, changeTodoText.value)
-        changeTodoLocation.value = ''
-        changeTodoText.value = ''
-    },
+//    changeTodo: document.getElementById('changeTodoButton').onclick = function() {
+//        let changeTodoLocation = document.getElementById('changeTodoLocation')
+//        let changeTodoText = document.getElementById('changeTodoText')
+//        todoList.changeTodoName(changeTodoLocation.value, changeTodoText.value)
+//        changeTodoLocation.value = ''
+//        changeTodoText.value = ''
+//    },
     
     toggleTodos: document.getElementById('toggleAllTodosButton').onclick = function() {
         todoList.toggleAll()
@@ -103,8 +103,9 @@ let view = {
                 todosUl.appendChild(todosLi)
                 todosUl.appendChild(todosInput)
                 todosInput.setAttribute('hidden', 'true')
+                todosInput.setAttribute('placeholder', todoList.myTodos[i].todoName)
                 todosLi.id = i
-                todosInput.id = i
+                todosInput.id = i + 'a'
             }
         }
     },
@@ -142,6 +143,9 @@ let view = {
     } else if (elementClicked.className === 'toggleButton') {
         todoList.toggleTodo(elementClicked.parentNode.id)
     
+    } else if (elementClicked.className === 'editButton') {
+        elementClicked.parentNode.setAttribute('hidden', 'true')
+        document.getElementById(elementClicked.parentNode.id + 'a').removeAttribute('hidden')
     }
 })
 
