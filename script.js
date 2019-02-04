@@ -66,12 +66,6 @@ let handlers = {
         changeTodoText.value = ''
     },
     
-    toggleTodo: document.getElementById('toggleTodoButton').onclick = function() {
-        let toggleTodoInput = document.getElementById('toggleTodoInput')
-        todoList.toggleTodo(toggleTodoInput.value)
-        toggleTodoInput.value = ''
-    },
-    
     toggleTodos: document.getElementById('toggleAllTodosButton').onclick = function() {
         todoList.toggleAll()
     },
@@ -103,6 +97,8 @@ let view = {
                     todosLi.textContent = '( ) ' + todoList.myTodos[i].todoName
                 }
                 todosLi.appendChild(this.createDeleteButton())
+                todosLi.appendChild(this.createEditButton())
+                todosLi.appendChild(this.createToggleButton())
                 todosUl.appendChild(todosLi)
                 todosLi.id = i
             }
@@ -110,13 +106,25 @@ let view = {
     },
     
     createDeleteButton: function() {
-        var deleteButton = document.createElement('button')
+        let deleteButton = document.createElement('button')
         deleteButton.textContent = 'Delete'
         deleteButton.className = 'deleteButton'
         return deleteButton
     },
     
+    createEditButton: function() {
+        let editButton = document.createElement('button')
+        editButton.textContent = 'Edit'
+        editButton.className = 'editButton'
+        return editButton
+    } ,
     
+    createToggleButton: function() {
+        let toggleButton = document.createElement('button')
+        toggleButton.textContent = '√'
+        toggleButton.className = 'toggleButton'
+        return toggleButton
+    } 
 }
 
     let todoUl = document.querySelector('ul')
@@ -126,6 +134,9 @@ let view = {
 
     if(elementClicked.className === 'deleteButton') {
         todoList.deleteTodo(elementClicked.parentNode.id)
+        
+    } else if (elementClicked.className === 'toggleButton') {
+        todoList.toggleTodo(elementClicked.parentNode.id)
     }
 })
 
