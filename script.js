@@ -50,9 +50,9 @@ let todoList = {
 }
 
 let handlers = {
-    addTodo: document.getElementById('addTodoInput').addEventListener('keyup', function(event) {
+    addTodo: document.getElementById('addTodoInput').addEventListener('keydown', function(event) {
         let addTodoInput = document.getElementById('addTodoInput')
-        if(event.keyCode === 13) {
+        if(event.keyCode === 13 && event.repeat === false && addTodoInput.value != '') {
             todoList.addTodo(addTodoInput.value)
             addTodoInput.value = ''
         }
