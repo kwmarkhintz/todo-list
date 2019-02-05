@@ -81,7 +81,7 @@ let view = {
         if(todoList.myTodos == '') {
             let todosLi = document.createElement('li')
             todosUl.appendChild(todosLi)
-            todosLi.textContent = 'Todo List is Empty'
+            todosLi.textContent = 'Your Todo List is Empty'
         
         } else {
             
@@ -97,9 +97,9 @@ let view = {
                 } else {
                     todosLi.textContent = '( ) ' + todoList.myTodos[i].todoName
                 }
-                todosLi.appendChild(this.createDeleteButton())
-                todosLi.appendChild(this.createEditButton())
                 todosLi.appendChild(this.createToggleButton())
+                todosLi.appendChild(this.createEditButton())
+                todosLi.appendChild(this.createDeleteButton())
                 todosUl.appendChild(todosLi)
                 todosUl.appendChild(todosInput)
                 todosInput.setAttribute('hidden', 'true')
@@ -112,21 +112,21 @@ let view = {
     
     createDeleteButton: function() {
         let deleteButton = document.createElement('button')
-        deleteButton.textContent = 'Delete'
+        deleteButton.innerHTML = '&#9851;'
         deleteButton.className = 'deleteButton'
         return deleteButton
     },
     
     createEditButton: function() {
         let editButton = document.createElement('button')
-        editButton.textContent = 'Edit'
+        editButton.innerHTML = '&#9998;'
         editButton.className = 'editButton'
         return editButton
     } ,
     
     createToggleButton: function() {
         let toggleButton = document.createElement('button')
-        toggleButton.textContent = '√'
+        toggleButton.innerHTML = '&#10003'
         toggleButton.className = 'toggleButton'
         return toggleButton
     } 
